@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+{% block content %}
+ <table class="mt-5 m-auto border border-3 p-3 col-8 text-center">
+     <thead >
+            <tr class="p-3 m-auto bg-dark text-white">
+                <th>{{ ID }}</th>
+                <th>{{ NAME }}</th>
+                <th>{{ MOVIE }}</th>
+                <th>{{ MULTIPLEX }}</th>
+                <th>{{ DATE }}</th>
+                <th>{{ SEATS }}</th>
+                <th>{{ TYPE }}</th>
+                <th>{{ MOBILE }}</th>
+                <th COLSPAN="2">{{ ACTION }}</th>
+            </tr>
+     </thead>
+     <tbody>
+            {% for movieticket in movietickets %}
+                <tr>
+                    <td>{{ movieticket.id }}</td>
+                    <td>{{ movieticket.name }}</td>
+                    <td>{{ movieticket.movie }}</td>
+                    <td>{{ movieticket.multiplex }}</td>
+                    <td>{{ movieticket.date }}</td>
+                    <td>{{ movieticket.no_seat }}</td>
+                    <td>{{ movieticket.seat_type }}</td>
+                    <td>{{ movieticket.mobile }}</td>
+                    <td>
+                        <a href="{% url 'update_url' movieticket.id %}">
+                            <button><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'cancel_url' movieticket.id %}">
+                                    <button><i class="bi bi-pencil-square"></i>&nbspCnacel</button>
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+     </tbody>
+ </table>
+{% endblock %}
+
